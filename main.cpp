@@ -23,7 +23,11 @@ std::vector<std::pair<float,int>> algoritmo_voraz(float restante, std::stack<flo
   std::vector<std::pair<float,int>> cambio;
   while (restante != 0)
   { 
-    if (restante > monedas.top())      
+    if (restante < 0.01)
+    {
+      restante = 0; 
+    }
+    else if (restante > monedas.top())      
     { 
       if (!cambio.empty() && fabs(std::get<0>(cambio.back()) - monedas.top()) < 1e-8)
       {
@@ -42,7 +46,7 @@ std::vector<std::pair<float,int>> algoritmo_voraz(float restante, std::stack<flo
       restante = 0;
     }
     else  
-      
+
 
       monedas.pop();
     
